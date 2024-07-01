@@ -6,10 +6,10 @@ The computational part of the code is multiplatform.
 Two UIs are available: a web UI and a JVM UI.
 The web UI is more accessible and easier to use, but the JVM UI performs the computations faster.
 
-![WebUI-scrot](WebUI-scrot.png)
+[![WebUI-scrot](WebUI-scrot.png)](https://tue-alga.github.io/SimpleSets/)
 
 ## Setting up the project locally
-The easiest way to use the implementation is to use [the web UI](https://pages.stevenvdb.com/SimpleSets/).
+The easiest way to use the implementation is to use [the web UI](https://tue-alga.github.io/SimpleSets/).
 If you want to use the JVM-based implementation or modify the code, you need to set up the project locally.
 One way to do this is as follows.
 1. [Download IntelliJ IDEA](https://www.jetbrains.com/idea/download/)
