@@ -1,0 +1,1 @@
+external fun require(path: String): String

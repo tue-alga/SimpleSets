@@ -1,0 +1,15 @@
+application.log
+build
+out
+.idea/*
+!.idea/icon.svg
+!.idea/codeInsightSettings.xml
+.gradle
+video/
+screenshots/
+gui-parameters/
+input-output/*
+.file-dialog.properties
+kotlin-js-store
+webpack.config.d
+.kotlin
