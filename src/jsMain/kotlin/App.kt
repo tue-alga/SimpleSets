@@ -452,6 +452,7 @@ val App = FC<Props> {
                                 max = 11
                                 css {
                                     width = 48.px
+                                    border = Border(1.px, LineStyle.solid, NamedColor.lightgray)
                                 }
                             }
                             onParse = {

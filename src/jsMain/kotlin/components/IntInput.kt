@@ -19,14 +19,14 @@ external interface IntInputProps: Props {
 val IntInput = FC<IntInputProps> { props ->
     var currentValue: String by useState(props.startValue.toString())
     input {
+        css {
+            width = 48.px
+        }
         +props.inputProps
         value = currentValue
         type = InputType.number
         min = 0
         max = 11
-        css {
-            width = 48.px
-        }
         onChange = {
             currentValue = it.target.value
             try {
