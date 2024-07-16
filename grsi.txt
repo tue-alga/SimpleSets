@@ -1,0 +1,3 @@
+Title: SimpleSets: Capturing Categorical Point Patterns with Simple Shapes
+Authors: Steven van den Broek, Wouter Meulemans, and Bettina Speckmann
+Operating System: Ubuntu

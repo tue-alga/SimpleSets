@@ -6,7 +6,7 @@ The computational part of the code is multiplatform.
 Two UIs are available: a web UI and a JVM UI.
 The web UI is more accessible and easier to use, but the JVM UI performs the computations faster.
 
-[![WebUI-scrot](WebUI-scrot.png)](https://tue-alga.github.io/SimpleSets/)
+[![Screenshot of the web interface](images/WebUI-scrot.png)](https://tue-alga.github.io/SimpleSets/)
 
 ## Setting up the project locally
 The easiest way to use the implementation is to use [the web UI](https://tue-alga.github.io/SimpleSets/).
@@ -16,6 +16,7 @@ One way to do this is as follows.
 2. Download the SimpleSets repository and open it as a project in IntelliJ IDEA (this may take a while to load).
 3. In the IDE move to `src/jvmMain/Main.kt` and run this file by clicking on the green arrow next to the main function. This should cause a window to appear. If there is a NoClassDefFoundError about `mu/KotlinLogging` then do the following. At the top of the screen next to the screen arrow click on the three dots and 'Edit (configuration)'. In the screen that opens click the plus sign at the top left and select 'Gradle'. Under Run fill in "jvmRun -DmainClass=MainKt --quiet", and leave the rest as the default. Click save and run this configuration.
 4. The left blue part of the screen is the settings window. Input points have to be loaded from a file in the `input-output` directory. Pressing F11 toggles the visibility of the settings window. Press the spacebar to run the algorithm. Make sure no field or button in the UI is active before clicking spacebar by clicking somewhere on the screen first.
+As a starting point, also have a look at [GenerateExample.kt](src/jvmMain/kotlin/GenerateExample.kt) and [grsi-run.sh](grsi-run.sh).
 
 ## Remarks
 This implementation does not deal with the case where a stacking preference cannot be satisfied. 
