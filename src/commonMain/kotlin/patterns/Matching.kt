@@ -14,15 +14,7 @@ data class Matching(val point1: Point, val point2: Point) : Pattern() {
         val angle = angleBetween(point1.pos - point2.pos, p.pos - point1.pos)
         if (angle > gs.maxTurningAngle.asRadians) return null
         if (angle > gs.maxBendAngle.asRadians) return null
-//        println("Strange things incoming!!")
-//        println("Any moment now")
-//        val ptList = listOf(p, point1, point2)
-//        println("Normal point list: $ptList")
-//        val wat = Bank(ptList)
-//        println("Good now: ${wat}")
-        val huh = point1.pos.distanceTo(p.pos) / 2 to Bank(listOf(p, point1, point2))
-        return huh
-
+        return point1.pos.distanceTo(p.pos) / 2 to Bank(listOf(p, point1, point2))
     }
 
     fun extensionEnd(p: Point, gs: GeneralSettings): Pair<Double, Bank>? {

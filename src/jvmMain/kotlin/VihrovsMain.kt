@@ -40,6 +40,7 @@ fun main() = application {
         }
         var r = pts.bounds.offsetEdges(s.vertexRadius)
         var comp = drawComposition {
+            translate(0.0, height.toDouble())
             scale(1.0, -1.0)
             for (h in hs) {
                 if (h.contour.shape.area < 0.85 * r.area) {
@@ -57,43 +58,6 @@ fun main() = application {
         comp.saveToFile(File("vihrovs.svg"))
         "py svgtoipe.py vihrovs.svg".runCommand(File("."))
 
-//        val gui = GUI()
-//        gui.add(s)
-//        gui.add(gs, "General settings")
-//        gui.add(ds, "Draw settings")
-//
-//
-//        gui.onChange { _, _ ->
-//            r = pts.bounds.offsetEdges(s.vertexRadius)
-//            s.influenceRadius = 2 * s.vertexRadius
-//            hs = vihrovs(pts, s)
-//            contours = hs.associateWith { h ->
-//                hobbyCurve(
-//                        simplify(h.contour.segments.map { it.start } , 0.05)
-//                        , closed=true)
-//            }
-//
-//            comp = drawComposition {
-//                scale(1.0, -1.0)
-//                for (h in hs) {
-//                    if (h.contour.shape.area < 0.85 * r.area) {
-//                        fill = if (h.points.isNotEmpty())
-//                            ds.colors[h.type].whiten(0.7)
-//                        else
-//                            ColorRGBa.WHITE
-//                        stroke = ColorRGBa.BLACK
-//                        strokeWeight = ds.contourStrokeWeight(gs)
-//                        contour(contours[h]!!)
-//                    }
-//                }
-//                coloredPoints(pts, gs, ds)
-//            }
-//
-//            comp.saveToFile(File("vihrovs.svg"))
-//            "py svgtoipe.py vihrovs.svg".runCommand(File("."))
-//        }
-
-//        extend(gui)
         extend(Camera2D())
         extend {
             drawer.apply {

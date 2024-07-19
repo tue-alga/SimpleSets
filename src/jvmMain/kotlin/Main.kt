@@ -13,17 +13,14 @@ import org.openrndr.extra.gui.GUIAppearance
 import org.openrndr.extra.parameters.*
 import org.openrndr.launch
 import org.openrndr.math.Matrix44
-import org.openrndr.math.Vector2
 import org.openrndr.math.transforms.transform
 import org.openrndr.shape.Composition
-import org.openrndr.shape.LineSegment
 import org.openrndr.svg.toSVG
 import patterns.Pattern
 import patterns.bounds
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.TimeUnit
-import kotlin.math.round
 
 @OptIn(DelicateCoroutinesApi::class)
 fun main() = application {
@@ -114,16 +111,12 @@ fun main() = application {
             fun computeDrawing() {
                 try {
                     dilatedPolies = partition.patterns.map { it.dilate(gs.expandRadius) }
-                    xGraph = XGraph(dilatedPolies, gs, cds, morph=::erodeDilate, debug={
-                            comp, fileName ->
-//                        val timeStamp = ZonedDateTime
-//                            .now( ZoneId.systemDefault() )
-//                            .format( DateTimeFormatter.ofPattern( "uuuu.MM.dd.HH.mm.ss" ) )
-                        val f = File("${fileName}.svg")
-
-                        f.writeText(comp.toSVG())
-                        "py svgtoipe.py ${fileName}.svg".runCommand(File("."))
-                    })
+                    xGraph = XGraph(dilatedPolies, gs, cds, morph=::erodeDilate)//, debug={
+//                            comp, fileName ->
+//                        val f = File("${fileName}.svg")
+//                        f.writeText(comp.toSVG())
+//                        "py svgtoipe.py ${fileName}.svg".runCommand(File("."))
+//                    })
                 }
                 catch(e: Throwable) {
                     e.printStackTrace()
@@ -237,31 +230,6 @@ fun main() = application {
         extend(gui)
         gui.compartmentsCollapsedByDefault = false
 
-        class Grid(val cellSize: Double, val center: Vector2){
-            fun snap(p: Vector2): Vector2 = (p - center).mapComponents { round(it / cellSize) * cellSize } + center
-
-            fun draw(compositionDrawer: CompositionDrawer){
-                val r = drawer.bounds
-                val vLines = buildList {
-                    var x = r.corner.x + (center.x.mod(cellSize))
-                    while (x <= r.corner.x + r.width){
-                        add(LineSegment(x, r.corner.y, x, r.corner.y + r.height))
-                        x += cellSize
-                    }
-                }
-                val hLines = buildList {
-                    var y = r.corner.y + (center.y.mod(cellSize))
-                    while (y <= r.corner.y + r.height){
-                        add(LineSegment(r.corner.x, y, r.corner.x + r.width, y))
-                        y += cellSize
-                    }
-                }
-                compositionDrawer.isolated {
-                    lineSegments(vLines + hLines)
-                }
-            }
-        }
-
         gui.onChange { varName, _ ->
             if (varName == "pSize") {
                 if (ps.computeDrawing) ps.computeDrawing()
@@ -322,8 +290,6 @@ fun main() = application {
         }
     }
 }
-
-fun Vector2.mapComponents(f: (Double) -> Double) = Vector2(f(x), f(y))
 
 fun String.runCommand(workingDir: File) {
     ProcessBuilder(*split(" ").toTypedArray())

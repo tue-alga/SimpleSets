@@ -159,7 +159,7 @@ data class XFace(val edge: XHalfEdge, val origins: List<Int>, val contour: Shape
     }
 
     fun setMorphedFace(i: Int, morphed: ShapeContour) {
-        val morphedFaceContour = intersection(morphed.fix(0.1), contour!!.offsetFix(0.01).fix(0.1)).contours.firstOrNull() ?: ShapeContour.EMPTY
+        val morphedFaceContour = intersection(morphed, contour!!.offsetFix(0.01)).contours.firstOrNull() ?: ShapeContour.EMPTY
         morphedContours[i] = morphedFaceContour
     }
 
@@ -267,6 +267,9 @@ data class XFace(val edge: XHalfEdge, val origins: List<Int>, val contour: Shape
         ::draw
     }
 }
+
+typealias Debug = (Composition, String) -> Unit
+val noDebug: Debug = { _, _, -> }
 
 typealias Morpher = (ShapeContour, ShapeContour, Orientation, List<Circle>, List<Circle>, GeneralSettings, ComputeDrawingSettings, Debug) -> ShapeContour
 
@@ -583,7 +586,6 @@ data class XGraph(val hs: List<Pattern>, val gs: GeneralSettings, val cds: Compu
 
     fun hyperedges(): List<Hyperedge> {
         val candidates = faces
-            .filter { it.origins.size >= 3 }
             .groupBy { it.origins.size }
             .mapValues { it.value.map { Hyperedge(it.origins, it.relations.toList()) }.toMutableList() }
 
@@ -622,6 +624,9 @@ data class XGraph(val hs: List<Pattern>, val gs: GeneralSettings, val cds: Compu
                 for (r in f.relations) {
                     if (relations.find { it.left == r.left && it.right == r.right } == null) {
                         relations.add(r)
+                    }
+                    if (r.order == Ordering.EQ) {
+                        error("When drawing all relations should have a strict order")
                     }
                 }
             }
@@ -832,7 +837,7 @@ data class Hyperedge(val origins: List<Int>, val relations: List<Relation>) {
     }
 
     fun setOrdering() {
-        val ordering = ordering() ?: return
+        val ordering = ordering() ?: error("Order computation failed")
         for (r in relations) {
             val i = ordering.indexOf(r.left)
             val j = ordering.indexOf(r.right)

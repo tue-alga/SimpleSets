@@ -12,6 +12,9 @@ import org.openrndr.math.YPolarity
 import org.openrndr.math.transforms.*
 import org.openrndr.shape.*
 
+// This file was adapted from a version of this file, because I needed some custom functionality:
+// https://github.com/openrndr/orx/blob/fb8357911ca70c19fbd7edc9cc454dc2c30038cb/orx-composition/src/commonMain/kotlin/CompositionDrawer.kt
+
 /**
  * Used internally to define [ClipMode]s.
  */

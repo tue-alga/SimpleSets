@@ -1,5 +1,4 @@
 import dilated.dilate
-import org.openrndr.color.ColorRGBa
 import org.openrndr.math.Matrix44
 import org.openrndr.math.Vector2
 import org.openrndr.math.transforms.transform

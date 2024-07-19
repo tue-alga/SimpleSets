@@ -79,6 +79,14 @@ fun erodeDilate(c: ShapeContour, compContour: ShapeContour, orient: Orientation,
 //
 //        stroke = ColorRGBa.RED
 //        contour(final)
+//
+//        stroke = ColorRGBa.PINK
+//        val ffinal = final.subsVC(c.start, c.end).toList().minBy { sub ->
+//            sub.equidistantPositions(10).sumOf { p ->
+//                c.squaredDistanceTo(p)
+//            }
+//        }.fix(0.1).removeSpikes()
+//        contour(ffinal)
 //    }
 //    debug(comp, "erodeDilate_${c.segments.size}")
 
