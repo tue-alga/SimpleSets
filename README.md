@@ -1,4 +1,6 @@
-# SimpleSets
+# SimpleSets: Capturing Categorical Point Patterns with Simple Shapes
+[![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.12784670.svg)](https://doi.org/10.5281/zenodo.12784670)
+
 This repository contains a prototype implementation of SimpleSets.
 Given a set of points in the plane that each belong to one category, SimpleSets creates simple shapes that enclose patterns in the data.
 The visualization is described in more detail in the corresponding paper:
