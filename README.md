@@ -1,5 +1,6 @@
 # SimpleSets: Capturing Categorical Point Patterns with Simple Shapes
-[![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.12784670.svg)](https://doi.org/10.5281/zenodo.12784670)
+[![arXiv](https://img.shields.io/badge/arXiv-2407.14433-b31b1b.svg)](https://arxiv.org/abs/2407.14433) [![Zenodo](https://zenodo.org/badge/DOI/10.5281/zenodo.12784670.svg)](https://doi.org/10.5281/zenodo.12784670)
+<a href="https://www.replicabilitystamp.org/#https-github-com-tue-alga-simplesets"><img src="https://www.replicabilitystamp.org/logo/Reproducibility-tiny.png" width=20px height=20px></a>
 
 This repository contains a prototype implementation of SimpleSets.
 Given a set of points in the plane that each belong to one category, SimpleSets creates simple shapes that enclose patterns in the data.
